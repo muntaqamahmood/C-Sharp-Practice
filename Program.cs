@@ -99,15 +99,29 @@ namespace HelloWorld
                     .ForMember(destination => destination.Price,
                     options => options.MapFrom(source => source.price));
             }));
+            // Method 1
             IEnumerable<ComputerSnake>? computerSnakes = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<ComputerSnake>>(computersSnakeJson);
             if (computerSnakes != null)
             {
                 // execute the mapping with the above MappingConfigurations (from source to destination)
                 IEnumerable<Computer> computersResult = mapper.Map<IEnumerable<Computer>>(computerSnakes);
-                foreach (Computer computer in computersResult)
-                {
-                    Console.WriteLine(computer.Motherboard);
-                }
+                Console.WriteLine(computersResult.Count());
+                // foreach (Computer computer in computersResult)
+                // {
+                //     Console.WriteLine(computer.Motherboard);
+                // }
+            }
+
+            // Method 2 (Map property name in actual Computer.cs Model -> dont need a copy model)
+            IEnumerable<Computer>? computersJsonPropertyMapping = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersSnakeJson);
+            if (computersJsonPropertyMapping != null)
+            {
+                Console.WriteLine(computersJsonPropertyMapping.Count());
+
+                // foreach (Computer computer in computersJsonPropertyMapping)
+                // {
+                //     Console.WriteLine(computer.Motherboard);
+                // }
             }
 
         }
