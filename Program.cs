@@ -100,6 +100,8 @@ namespace HelloWorld
             {
                 foreach (Computer computer in computers)
                 {
+                    computer.Motherboard = Utils.EscapeUnwantedChars(computer.Motherboard);
+                    computer.VideoCard = Utils.EscapeUnwantedChars(computer.VideoCard);
                     // Console.WriteLine(computer.VideoCard);
                     string sql = @"INSERT INTO TutorialAppSchema.Computer (
                         Motherboard,
