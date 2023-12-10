@@ -1,0 +1,1 @@
+ComputerId: 1, Motherboard: AS160, CPUCores: 4, ReleaseDate: 2023-01-09 12:00:00 AM, Price: 1982.2300, HasWifi: True, HasLTE: False, VideoCard: GTX 1660
